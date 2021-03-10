@@ -2772,11 +2772,11 @@ RectTransform:
   m_Father: {fileID: 1939961700}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 350, y: 400}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -397, y: 400}
   m_SizeDelta: {x: 350, y: 50}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &350925620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15883,11 +15883,11 @@ RectTransform:
   m_Father: {fileID: 1939961700}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 250, y: -200}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -497, y: -200}
   m_SizeDelta: {x: 350, y: 50}
-  m_Pivot: {x: 0, y: 0.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1395515519
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16345,7 +16345,7 @@ GameObject:
   - component: {fileID: 1407961510}
   - component: {fileID: 1407961509}
   m_Layer: 0
-  m_Name: Opponent Player
+  m_Name: Opponent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20286,7 +20286,7 @@ GameObject:
   - component: {fileID: 1718893883}
   - component: {fileID: 1718893882}
   m_Layer: 0
-  m_Name: Local Player
+  m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

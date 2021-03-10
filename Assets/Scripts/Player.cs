@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
         yield return new WaitUntil(() => Hand.Cards.Count == numCards + 1);
         DrawPile.OnClicked -= HandleDrawPileClicked;
         DiscardPile.OnClicked -= HandleDiscardPileClicked;
+        yield return new WaitForSeconds(1.5f);
+        Hand.DeselectHoverCard();
     }
 
     private void HandleDrawPileClicked(DrawPile pile)

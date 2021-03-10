@@ -54,8 +54,11 @@ public class Referee : MonoBehaviour
             opponentExpeditionPiles[e].expedition = (Card.Expedition)e;
         }
 
-        UpdateScoreText(playerScoreText, playerExpeditionPiles);
-        UpdateScoreText(opponentScoreText, opponentExpeditionPiles);
+        localPlayer.Hand.DeselectHoverCard();
+        opponentPlayer.Hand.DeselectHoverCard();
+
+        UpdateScoreText(localPlayer.name, playerScoreText, playerExpeditionPiles);
+        UpdateScoreText(opponentPlayer.name, opponentScoreText, opponentExpeditionPiles);
 
         StartCoroutine(DoPlayerTurns());
     }
@@ -117,7 +120,7 @@ public class Referee : MonoBehaviour
         pile.AddCardToTop(cardObj.data);
         Destroy(cardObj.gameObject);
 
-        UpdateScoreText(scoreText, expeditionPiles);
+        UpdateScoreText(player.name, scoreText, expeditionPiles);
 
         // Draw a new card from the top of the draw pile OR any discard pile
         yield return player.DrawCard();
@@ -127,11 +130,10 @@ public class Referee : MonoBehaviour
         yield return player.Hand.LowerTo(-1f);
     }
 
-    // TODO - 2/23/2021
-    private static void UpdateScoreText(TextMeshProUGUI scoreText, ExpeditionPile[] expeditionPiles)
+    private static void UpdateScoreText(string playerName, TextMeshProUGUI scoreText, ExpeditionPile[] expeditionPiles)
     {
         int totalScore = CalculateTotalScore(expeditionPiles);
-        scoreText.text = $"Score: {totalScore}";
+        scoreText.text = $"{playerName} Score: {totalScore}";
     }
 
     public static int CalculateTotalScore(ExpeditionPile[] expeditionPiles)

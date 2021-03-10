@@ -12,7 +12,8 @@ public class VirtualPlayer : Player
         {
             var discardPile = Referee.Instance.discardPiles[i];
             var expeditionPile = Referee.Instance.opponentExpeditionPiles[i];
-            if (expeditionPile.TopCard != null && discardPile.TopCard.data.value == (expeditionPile.TopCard.data.value + 1))
+            if (expeditionPile.TopCard != null && discardPile.TopCard != null && 
+                discardPile.TopCard.data.value == (expeditionPile.TopCard.data.value + 1))
             {
                 topCard = discardPile.RemoveCardFromTop();
                 break;
@@ -21,6 +22,7 @@ public class VirtualPlayer : Player
 
         topCard = topCard ?? drawPile.RemoveCardFromTop();
         Hand.AddCard(topCard.Value);
-        yield return new WaitForSecondsRealtime(0.1f);
+        yield return new WaitForSeconds(1f);
+        Hand.DeselectHoverCard();
     }
 }

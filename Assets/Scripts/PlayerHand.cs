@@ -37,6 +37,7 @@ public class PlayerHand : MonoBehaviour
 #else
         cards.Add(cardObj);
 #endif
+        hoverCard = cardObj;
         return cardObj;
     }
     public Card RemoveCard(int index)
@@ -61,7 +62,6 @@ public class PlayerHand : MonoBehaviour
     }
     public Selection SelectedCard { get; protected set; }
 
-    // TODO  - 3/02/2021 
     public virtual IEnumerator SelectOneCard()
     {
         // Clear any previous selection
@@ -84,6 +84,7 @@ public class PlayerHand : MonoBehaviour
             card.OnHover -= HandleCardHover;
         }
     }
+
     private void HandleCardClicked(Card card, PointerEventData eventData)
     {
         // Only accept button clicks from LEFT or RIGHT mouse buttons
@@ -95,6 +96,8 @@ public class PlayerHand : MonoBehaviour
     }
 
     private Card hoverCard;
+
+    public void DeselectHoverCard() => hoverCard = null;
 
     private void HandleCardHover(Card card, PointerEventData eventData)
     {

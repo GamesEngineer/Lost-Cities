@@ -43,11 +43,14 @@ public class VirtualPlayerHand : PlayerHand
 
     private Card SelectNextCard()
     {
+        // CHALLENGE - make this selection smarter
         Card bestCard = null;
         foreach (var card in Cards)
         {
-            int x = (int)card.data.expedition;
-            if (bestCard == null || card.data.value < bestCard.data.value) { bestCard = card; }
+            if (bestCard == null || card.data.value < bestCard.data.value)
+            {
+                bestCard = card;
+            }
         }
 
         SelectedCard = new Selection
