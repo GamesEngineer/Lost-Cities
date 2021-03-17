@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public enum Expedition { WHITE, YELLOW, BLUE, GREEN, RED, /**/ COUNT };
+    public Sprite[] expeditionArt;
 
     [System.Serializable]
     public struct Data
@@ -26,7 +27,8 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         if (artImage && valueText)
         {
-            artImage.color = colors[(int)data.expedition];
+            artImage.sprite = expeditionArt[(int)data.expedition];
+            artImage.color = Color.Lerp(colors[(int)data.expedition], Color.white, 0.5f);
             valueText.text = data.value == 0 ? "X" : data.value.ToString();
             valueText.color = artImage.color;
         }

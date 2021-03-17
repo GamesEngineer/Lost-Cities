@@ -49,7 +49,7 @@ public class Referee : MonoBehaviour
         // Ensure the expeditions are represented
         for (int e = 0; e < (int)Card.Expedition.COUNT; e++)
         {
-            discardPiles[e].TopCard.data.expedition = (Card.Expedition)e;
+            discardPiles[e].expedition = (Card.Expedition)e;
             playerExpeditionPiles[e].expedition = (Card.Expedition)e;
             opponentExpeditionPiles[e].expedition = (Card.Expedition)e;
         }

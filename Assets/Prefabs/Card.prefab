@@ -90,6 +90,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 697325c84e90ecf4aa92001ea29f7876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  expeditionArt:
+  - {fileID: 21300000, guid: 803a3af8bc2af9d409a973ed2bf5aedb, type: 3}
+  - {fileID: 21300000, guid: 269cb3d208edf854eaec444205c5c887, type: 3}
+  - {fileID: 21300000, guid: f9c6a9a129289af409e7d81ce3b59871, type: 3}
+  - {fileID: 21300000, guid: 64ed0ae6189324c42a57b04f19f4fabb, type: 3}
+  - {fileID: 21300000, guid: a5d7146dcddb04049b8fefe6c4319266, type: 3}
   data:
     value: 0
     expedition: 0

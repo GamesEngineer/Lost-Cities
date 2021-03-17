@@ -23,6 +23,7 @@ public class VirtualPlayer : Player
         topCard = topCard ?? drawPile.RemoveCardFromTop();
         Hand.AddCard(topCard.Value);
         yield return new WaitForSeconds(1f);
+
         Hand.DeselectHoverCard();
     }
 }

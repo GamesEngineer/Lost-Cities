@@ -7,15 +7,17 @@ using UnityEngine.Assertions;
 [RequireComponent(typeof(Card))]
 public class DiscardPile : MonoBehaviour, ICardPile, IPointerClickHandler
 {
+    public Card.Expedition expedition;
     public Card TopCard { get; private set; }
     private readonly List<Card.Data> cards = new List<Card.Data>();
     public IReadOnlyList<Card.Data> Cards => cards;
     public static event Action<DiscardPile> OnClicked;
+    private Card visibleCard;
 
     private void Awake()
     {
-        TopCard = GetComponent<Card>();
-        TopCard.gameObject.SetActive(false);
+        visibleCard = GetComponent<Card>();
+        visibleCard.gameObject.SetActive(false);
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -25,10 +27,10 @@ public class DiscardPile : MonoBehaviour, ICardPile, IPointerClickHandler
 
     public void AddCardToTop(Card.Data card)
     {
-        Assert.IsTrue(card.expedition == TopCard.data.expedition);
+        Assert.IsTrue(card.expedition == expedition);
         cards.Add(card);
-        TopCard.data = card;
-        TopCard.gameObject.SetActive(true);
+        visibleCard.data = card;
+        visibleCard.gameObject.SetActive(true);
     }
 
     public Card.Data RemoveCardFromTop()
@@ -38,12 +40,13 @@ public class DiscardPile : MonoBehaviour, ICardPile, IPointerClickHandler
         cards.RemoveAt(topCardIndex);
         if (cards.Count == 0)
         {
-            TopCard.gameObject.SetActive(false);
+            visibleCard.gameObject.SetActive(false);
+            TopCard = null;
         }
         else
         {
             topCardIndex = cards.Count - 1;
-            TopCard.data = cards[topCardIndex];
+            visibleCard.data = cards[topCardIndex];
         }
         return topCard;
     }
