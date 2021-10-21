@@ -11,8 +11,18 @@ public class DrawPile : MonoBehaviour, ICardPile, IPointerClickHandler
     public IReadOnlyList<Card.Data> Cards => cards;
     public int CardsRemaining => cards.Count;
 
+    private Animator anim;
+
+    public bool IsPlayerSelectable
+    {
+        get => anim.GetBool("isSelectable");
+        set => anim.SetBool("isSelectable", value);
+    }
+
     private void Awake() // NOTE: 1/26/2020 - changed from Start to Awake so that Referee.Start has a valid draw pile to use
     {
+        anim = GetComponent<Animator>();
+
         // Populate the pile with all of the expedition cards
         for (var x = Card.Expedition.WHITE; x <= Card.Expedition.RED; x++)
         {
@@ -48,6 +58,7 @@ public class DrawPile : MonoBehaviour, ICardPile, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData _)
     {
+        anim.SetTrigger("select");
         OnClicked?.Invoke(this);
     }
 

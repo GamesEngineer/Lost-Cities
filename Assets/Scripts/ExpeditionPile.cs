@@ -12,8 +12,17 @@ public class ExpeditionPile : MonoBehaviour, ICardPile
     public IReadOnlyList<Card.Data> Cards => cards;
     public Card TopCard => cards.Count > 0 ? cardObjects[cards.Count - 1] : null;
 
+    private Animator anim;
+
+    public bool IsPlayerSelectable
+    {
+        get => anim.GetBool("isSelectable");
+        set => anim.SetBool("isSelectable", value);
+    }
+
     private void Awake()
     {
+        anim = GetComponent<Animator>();
         cardObjects = GetComponentsInChildren<Card>();
     }
 

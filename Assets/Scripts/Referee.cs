@@ -28,6 +28,7 @@ public class Referee : MonoBehaviour
             return;
         }
         Instance = this;
+        Application.targetFrameRate = 60;
     }
 
     private void Start()
@@ -74,15 +75,15 @@ public class Referee : MonoBehaviour
 
         while (true)
         {
-            yield return DoTurn(localPlayer, playerExpeditionPiles, discardPiles, playerScoreText);
+            yield return DoTurn(localPlayer, drawPile, playerExpeditionPiles, discardPiles, playerScoreText);
             yield return CheckForGameEnd();
 
-            yield return DoTurn(opponentPlayer, opponentExpeditionPiles, discardPiles, opponentScoreText);
+            yield return DoTurn(opponentPlayer, drawPile, opponentExpeditionPiles, discardPiles, opponentScoreText);
             yield return CheckForGameEnd();
         }
     }
 
-    private static IEnumerator DoTurn(Player player, ExpeditionPile[] expeditionPiles, DiscardPile[] discardPiles, TextMeshProUGUI scoreText)
+    private static IEnumerator DoTurn(Player player, DrawPile drawPile, ExpeditionPile[] expeditionPiles, DiscardPile[] discardPiles, TextMeshProUGUI scoreText)
     {
         yield return player.Hand.RaiseTo(0.75f);
 
@@ -124,9 +125,7 @@ public class Referee : MonoBehaviour
 
         // Draw a new card from the top of the draw pile OR any discard pile
         yield return player.DrawCard();
-
         yield return new WaitForSecondsRealtime(1f);
-
         yield return player.Hand.LowerTo(-1f);
     }
 

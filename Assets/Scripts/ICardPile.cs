@@ -6,4 +6,5 @@ public interface ICardPile
     void AddCardToTop(Card.Data card);
     Card.Data RemoveCardFromTop();
     Card TopCard { get; }
+    bool IsPlayerSelectable { get; set; }
 }

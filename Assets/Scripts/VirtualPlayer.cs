@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class VirtualPlayer : Player
 {
+    protected override void OnEnable() { }
+    protected override void OnDisable() { }
+
     public override IEnumerator DrawCard()
     {
         Card.Data? topCard = null;
@@ -22,7 +25,7 @@ public class VirtualPlayer : Player
 
         topCard = topCard ?? drawPile.RemoveCardFromTop();
         Hand.AddCard(topCard.Value);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSecondsRealtime(1f);
 
         Hand.DeselectHoverCard();
     }

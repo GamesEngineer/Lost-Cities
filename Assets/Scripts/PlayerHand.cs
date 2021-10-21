@@ -125,7 +125,7 @@ public class PlayerHand : MonoBehaviour
         while (transform.position.y < height)
         {
             transform.Translate(Vector3.up * 3f * Time.deltaTime, Space.Self);
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
     }
 
@@ -134,7 +134,7 @@ public class PlayerHand : MonoBehaviour
         while (transform.position.y > height)
         {
             transform.Translate(Vector3.down * 3f * Time.deltaTime, Space.Self);
-            yield return new WaitForEndOfFrame();
+            yield return null;
         }
     }
 

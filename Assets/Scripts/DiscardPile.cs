@@ -14,6 +14,12 @@ public class DiscardPile : MonoBehaviour, ICardPile, IPointerClickHandler
     public static event Action<DiscardPile> OnClicked;
     private Card visibleCard;
 
+    public bool IsPlayerSelectable
+    {
+        get => visibleCard.IsPlayerSelectable;
+        set => visibleCard.IsPlayerSelectable = value;
+    }
+
     private void Awake()
     {
         visibleCard = GetComponent<Card>();
@@ -22,6 +28,7 @@ public class DiscardPile : MonoBehaviour, ICardPile, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        Debug.Log($"Pointer CLICKED discard pile {expedition}");
         OnClicked?.Invoke(this);
     }
 

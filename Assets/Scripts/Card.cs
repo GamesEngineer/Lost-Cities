@@ -9,6 +9,14 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public enum Expedition { WHITE, YELLOW, BLUE, GREEN, RED, /**/ COUNT };
     public Sprite[] expeditionArt;
 
+    private Animator anim;
+
+    public bool IsPlayerSelectable
+    {
+        get => anim.GetBool("isSelectable");
+        set => anim.SetBool("isSelectable", value);
+    }
+
     [System.Serializable]
     public struct Data
     {
@@ -23,12 +31,28 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public TextMeshProUGUI valueText;
     public bool IsHighlighted { get; set; }
 
+    private void OnValidate()
+    {
+        if (artImage && valueText)
+        {
+            artImage.sprite = expeditionArt[(int)data.expedition];
+            artImage.color = Color.Lerp(colors[(int)data.expedition], Color.white, 0.6f);
+            valueText.text = data.value == 0 ? "X" : data.value.ToString();
+            valueText.color = artImage.color;
+        }
+    }
+
+    private void Awake()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     void Update()
     {
         if (artImage && valueText)
         {
             artImage.sprite = expeditionArt[(int)data.expedition];
-            artImage.color = Color.Lerp(colors[(int)data.expedition], Color.white, 0.5f);
+            artImage.color = Color.Lerp(colors[(int)data.expedition], Color.white, 0.6f);
             valueText.text = data.value == 0 ? "X" : data.value.ToString();
             valueText.color = artImage.color;
         }
@@ -41,6 +65,7 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     public void OnPointerClick(PointerEventData eventData)
     {
         Debug.Log($"Pointer CLICKED card {data.Label}");
+        anim.SetTrigger("select");
         OnClicked?.Invoke(this, eventData);
     }
 
@@ -53,4 +78,5 @@ public class Card : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, I
     {
         OnHover?.Invoke(this, eventData);
     }
+
 }
