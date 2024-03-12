@@ -5,7 +5,7 @@ namespace LostCities.GameModel
     public enum Expedition { INVALID = -1, WHITE, YELLOW, BLUE, GREEN, RED, /**/ COUNT };
 
     [Serializable]
-    [System.Diagnostics.DebuggerDisplay("{Label} (typeof(LostCities.GameModel.ExpeditionCard))")]
+    [System.Diagnostics.DebuggerDisplay("{Label} {typeof(LostCities.GameModel.ExpeditionCard)}")]
     public struct ExpeditionCard
     {
         public const int INVALID_VALUE = -1;
