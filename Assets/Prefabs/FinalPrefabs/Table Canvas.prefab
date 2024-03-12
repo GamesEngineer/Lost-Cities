@@ -306,7 +306,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &6668627817877398816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1246,7 +1246,7 @@ PrefabInstance:
     - target: {fileID: 2333531606713134402, guid: 507396778b4606942bfadfe09ba0c8ec,
         type: 3}
       propertyPath: m_Name
-      value: WHITE
+      value: TopDrawCard
       objectReference: {fileID: 0}
     - target: {fileID: 2867557835977928012, guid: 507396778b4606942bfadfe09ba0c8ec,
         type: 3}
